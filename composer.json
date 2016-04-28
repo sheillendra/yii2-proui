@@ -1,0 +1,24 @@
+{
+    "name": "sheillendra/yii2-proui",
+    "description": "proui",
+    "keywords": ["proui", "sheillendra", "yii2", "yii"],
+    "type": "yii2-extension",
+    "authors": [
+        {
+            "name": "Sheillendra",
+            "email": "sheillendra@yahoo.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "bower-asset/font-awesome": "*",
+        "bower-asset/jquery-ui": "~1.11.4",
+        "sersid/yii2-owl-carousel-asset": "*",
+        "sheillendra/yii2-helpers": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "sheillendra\\proui\\": ""
+        }
+    }
+}
