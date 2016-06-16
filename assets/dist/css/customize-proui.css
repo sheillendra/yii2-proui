@@ -1,0 +1,6 @@
+/* Include Open Sans font from Google Web Fonts */
+@import url('fonts/opensans/opensans.css');
+
+.sidebar-brand {
+    white-space: nowrap;
+}

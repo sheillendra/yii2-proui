@@ -1,9 +1,11 @@
 <?php
 
 use sheillendra\proui\assets\ProuiAsset;
+use sheillendra\proui\assets\CustomizeProuiAsset;
 use yii\helpers\Html;
 
 $prouiAsset = ProuiAsset::register($this);
+CustomizeProuiAsset::register($this);
 ?>
 
 <?php $this->beginPage() ?>
@@ -120,7 +122,7 @@ $prouiAsset = ProuiAsset::register($this);
                     <?php echo $this->render('@app/views/layouts/_header',['prouiAsset'=>$prouiAsset]) ?>
                     <!-- Page content -->
                     <div id="page-content">
-                        <?php echo $this->render('@app/views/layouts/_content',['prouiAsset'=>$prouiAsset]) ?>
+                        <?php echo $this->render('@app/views/layouts/_content',['prouiAsset'=>$prouiAsset, 'content'=>$content]) ?>
                     </div>
                     <!-- END Page Content -->
 
