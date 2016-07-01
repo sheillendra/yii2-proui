@@ -2,7 +2,9 @@
 
 use sheillendra\proui\assets\ProuiAsset;
 use sheillendra\proui\assets\CustomizeProuiAsset;
+use sheillendra\proui\widgets\Alert;
 use yii\helpers\Html;
+use yii\widgets\Breadcrumbs;
 
 $prouiAsset = ProuiAsset::register($this);
 CustomizeProuiAsset::register($this);
@@ -27,15 +29,15 @@ CustomizeProuiAsset::register($this);
 
         <!-- Icons -->
         <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-        <link rel="shortcut icon" href="<?php echo $prouiAsset->baseUrl?>/img/favicon.png">
-        <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl?>/img/icon57.png" sizes="57x57">
-        <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl?>/img/icon72.png" sizes="72x72">
-        <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl?>/img/icon76.png" sizes="76x76">
-        <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl?>/img/icon114.png" sizes="114x114">
-        <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl?>/img/icon120.png" sizes="120x120">
-        <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl?>/img/icon144.png" sizes="144x144">
-        <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl?>/img/icon152.png" sizes="152x152">
-        <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl?>/img/icon180.png" sizes="180x180">
+        <link rel="shortcut icon" href="<?php echo $prouiAsset->baseUrl ?>/img/favicon.png">
+        <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl ?>/img/icon57.png" sizes="57x57">
+        <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl ?>/img/icon72.png" sizes="72x72">
+        <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl ?>/img/icon76.png" sizes="76x76">
+        <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl ?>/img/icon114.png" sizes="114x114">
+        <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl ?>/img/icon120.png" sizes="120x120">
+        <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl ?>/img/icon144.png" sizes="144x144">
+        <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl ?>/img/icon152.png" sizes="152x152">
+        <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl ?>/img/icon180.png" sizes="180x180">
         <!-- END Icons -->
 
         <!-- Stylesheets -->
@@ -55,8 +57,8 @@ CustomizeProuiAsset::register($this);
         <!-- END Stylesheets -->
 
         <!-- Modernizr (browser feature detection library) & Respond.js (enables responsive CSS code on browsers that don't support it, eg IE8) -->
-        <script src="<?php echo $prouiAsset->baseUrl?>/js/vendor/modernizr-respond.min.js"></script>
-         <?php $this->head() ?>
+        <script src="<?php echo $prouiAsset->baseUrl ?>/js/vendor/modernizr-respond.min.js"></script>
+        <?php $this->head() ?>
     </head>
     <body>
         <?php $this->beginBody() ?>
@@ -112,22 +114,42 @@ CustomizeProuiAsset::register($this);
                 'enable-cookies'                                enables cookies for remembering active color theme when changed from the sidebar links
             -->
             <div id="page-container" class="sidebar-partial sidebar-visible-lg sidebar-no-animations header-fixed-top">
-                
-                <?php echo $this->render('@app/views/layouts/_sidebar_alt',['prouiAsset'=>$prouiAsset]) ?>
 
-                <?php echo $this->render('@app/views/layouts/_sidebar',['prouiAsset'=>$prouiAsset]) ?>
-                
+                <?php echo $this->render('@app/views/layouts/_sidebar_alt', ['prouiAsset' => $prouiAsset]) ?>
+
+                <?php echo $this->render('@app/views/layouts/_sidebar', ['prouiAsset' => $prouiAsset]) ?>
+
                 <!-- Main Container -->
                 <div id="main-container">
-                    <?php echo $this->render('@app/views/layouts/_header',['prouiAsset'=>$prouiAsset]) ?>
+                    <?php echo $this->render('@app/views/layouts/_header', ['prouiAsset' => $prouiAsset]) ?>
                     <!-- Page content -->
                     <div id="page-content">
-                        <?php echo $this->render('@app/views/layouts/_content',['prouiAsset'=>$prouiAsset, 'content'=>$content]) ?>
+
+                        <?php if(isset($this->params['pageTitle'])) : ?>
+                        <div class="content-header">
+                            <div class="header-section">
+                                <h1>
+                                    <i class="gi gi-notes_2"></i><?php echo isset($this->params['pageTitle']['title'])?$this->params['pageTitle']['title']:''?><?php if(isset($this->params['pageTitle']['smallTitle'])) :?><br><small><?php echo $this->params['pageTitle']['smallTitle']?></small><?php endif;?>
+                                </h1>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+
+                        <?php
+                        echo Breadcrumbs::widget([
+                            'encodeLabels' => false,
+                            'options' => ['class' => 'breadcrumb breadcrumb-top'],
+                            'homeLink' => isset(Yii::$app->params['homeLink']) ? Yii::$app->params['homeLink'] : null,
+                            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                        ])
+                        ?>
+                        <?php echo Alert::widget() ?>
+                        <?php echo $this->render('@app/views/layouts/_content', ['prouiAsset' => $prouiAsset, 'content' => $content]) ?>
                     </div>
                     <!-- END Page Content -->
 
-                    <?php echo $this->render('@app/views/layouts/_footer',['prouiAsset'=>$prouiAsset]) ?>
-                    
+                    <?php echo $this->render('@app/views/layouts/_footer', ['prouiAsset' => $prouiAsset]) ?>
+
                 </div>
                 <!-- END Main Container -->
             </div>
