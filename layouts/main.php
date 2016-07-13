@@ -125,11 +125,23 @@ CustomizeProuiAsset::register($this);
                     <!-- Page content -->
                     <div id="page-content">
 
-                        <?php if(isset($this->params['pageTitle'])) : ?>
+                        <?php if(isset($this->params['pageTitle'])) : 
+                            if(!isset($this->params['pageTitle']['title'])){
+                                $this->params['pageTitle']['title'] = '';
+                            }
+                            
+                            if(!isset($this->params['pageTitle']['smallTitle'])){
+                                $this->params['pageTitle']['smallTitle'] = '';
+                            }
+                            
+                            if(!isset($this->params['pageTitle']['icon'])){
+                                $this->params['pageTitle']['icon'] = '';
+                            }
+                            ?>
                         <div class="content-header">
                             <div class="header-section">
                                 <h1>
-                                    <i class="gi gi-notes_2"></i><?php echo isset($this->params['pageTitle']['title'])?$this->params['pageTitle']['title']:''?><?php if(isset($this->params['pageTitle']['smallTitle'])) :?><br><small><?php echo $this->params['pageTitle']['smallTitle']?></small><?php endif;?>
+                                    <i class="<?php echo $this->params['pageTitle']['icon']?>"></i><?php echo $this->params['pageTitle']['title']?><br><small><?php echo $this->params['pageTitle']['smallTitle'];?></small>
                                 </h1>
                             </div>
                         </div>
