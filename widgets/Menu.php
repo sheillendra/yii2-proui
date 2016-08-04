@@ -17,9 +17,6 @@ class Menu extends \yii\widgets\Menu {
             $options = array_merge($this->itemOptions, ArrayHelper::getValue($item, 'options', []));
             $tag = ArrayHelper::remove($options, 'tag', 'li');
             $class = [];
-//            if ($item['active']) {
-//                $class[] = $this->activeCssClass;
-//            }
             if ($i === 0 && $this->firstItemCssClass !== null) {
                 $class[] = $this->firstItemCssClass;
             }
