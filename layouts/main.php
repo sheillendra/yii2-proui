@@ -11,6 +11,8 @@ CustomizeProuiAsset::register($this);
 ?>
 
 <?php $this->beginPage() ?>
+
+<?php echo $this->render('@app/views/layouts/_init_view') ?>
 <!DOCTYPE html>
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if IE 9]>         <html class="no-js lt-ie10"> <![endif]-->
