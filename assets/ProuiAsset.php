@@ -9,8 +9,6 @@ class ProuiAsset extends AssetBundle {
     public $css = [
         'css/plugins.css',
         'css/main.css',
-        //'css/themes.css'
-        //'css/themes/night.css'
     ];
     public $js = [
         'js/app.js',
