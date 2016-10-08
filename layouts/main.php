@@ -14,9 +14,9 @@ CustomizeProuiAsset::register($this);
 
 <?php echo $this->render('@app/views/layouts/_init_view') ?>
 <!DOCTYPE html>
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if IE 9]>         <html class="no-js lt-ie10"> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="<?= Yii::$app->language ?>"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10" lang="<?= Yii::$app->language ?>"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="<?= Yii::$app->language ?>"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
 

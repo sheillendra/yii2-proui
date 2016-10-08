@@ -6,14 +6,11 @@ $prouiAsset = ProuiAsset::register($this);
 
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if IE 9]>         <html class="no-js lt-ie10"> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="<?= Yii::$app->language ?>"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10" lang="<?= Yii::$app->language ?>"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="<?= Yii::$app->language ?>"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-
-        <title>ProUI - Responsive Bootstrap Admin Template</title>
-
         <meta name="description" content="ProUI is a Responsive Bootstrap Admin Template created by pixelcave and published on Themeforest.">
         <meta name="author" content="pixelcave">
         <meta name="robots" content="noindex, nofollow">
@@ -32,7 +29,8 @@ $prouiAsset = ProuiAsset::register($this);
         <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl;?>/img/icon152.png" sizes="152x152">
         <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl;?>/img/icon180.png" sizes="180x180">
         <!-- END Icons -->
-
+        <?= Html::csrfMetaTags() ?>
+        <title><?php echo Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
     <body>
