@@ -15,5 +15,5 @@ class CustomizeProuiAsset extends AssetBundle {
     public $depends = [
         'sheillendra\proui\assets\ProuiAsset'
     ];
-    public $publishOptions=['forceCopy'=>YII_DEBUG];
+    //public $publishOptions=['forceCopy'=>YII_DEBUG];
 }
