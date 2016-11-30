@@ -14,14 +14,14 @@ CustomizeProuiAsset::register($this);
 
 <?php echo $this->render('@app/views/layouts/_init_view') ?>
 <!DOCTYPE html>
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang="<?= Yii::$app->language ?>"> <![endif]-->
-<!--[if IE 9]>         <html class="no-js lt-ie10" lang="<?= Yii::$app->language ?>"> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="no-js" lang="<?= Yii::$app->language ?>"> <!--<![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="<?php echo Yii::$app->language ?>"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10" lang="<?php echo Yii::$app->language ?>"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="<?php echo Yii::$app->language ?>"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
 
-        <?= Html::csrfMetaTags() ?>
-        <title><?= Html::encode($this->title) ?></title>
+        <?php echo Html::csrfMetaTags() ?>
+        <title><?php echo Html::encode($this->title) ?></title>
 
         <meta name="description" content="ProUI is a Responsive Bootstrap Admin Template created by pixelcave and published on Themeforest.">
         <meta name="author" content="pixelcave">
@@ -31,7 +31,7 @@ CustomizeProuiAsset::register($this);
 
         <!-- Icons -->
         <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-        <link rel="shortcut icon" href="<?php echo isset($this->params['favico'])? $this->params['favico']:''?>">
+        <link rel="shortcut icon" href="<?php echo $this->params['favico'] ?>">
         <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl ?>/img/icon57.png" sizes="57x57">
         <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl ?>/img/icon72.png" sizes="72x72">
         <link rel="apple-touch-icon" href="<?php echo $prouiAsset->baseUrl ?>/img/icon76.png" sizes="76x76">
@@ -127,26 +127,27 @@ CustomizeProuiAsset::register($this);
                     <!-- Page content -->
                     <div id="page-content">
 
-                        <?php if(isset($this->params['pageTitle'])) : 
-                            if(!isset($this->params['pageTitle']['title'])){
+                        <?php
+                        if (isset($this->params['pageTitle'])) :
+                            if (!isset($this->params['pageTitle']['title'])) {
                                 $this->params['pageTitle']['title'] = '';
                             }
-                            
-                            if(!isset($this->params['pageTitle']['smallTitle'])){
+
+                            if (!isset($this->params['pageTitle']['smallTitle'])) {
                                 $this->params['pageTitle']['smallTitle'] = '';
                             }
-                            
-                            if(!isset($this->params['pageTitle']['icon'])){
+
+                            if (!isset($this->params['pageTitle']['icon'])) {
                                 $this->params['pageTitle']['icon'] = '';
                             }
                             ?>
-                        <div class="content-header">
-                            <div class="header-section">
-                                <h1>
-                                    <i class="<?php echo $this->params['pageTitle']['icon']?>"></i><?php echo $this->params['pageTitle']['title']?><br><small><?php echo $this->params['pageTitle']['smallTitle'];?></small>
-                                </h1>
+                            <div class="content-header">
+                                <div class="header-section">
+                                    <h1>
+                                        <i class="<?php echo $this->params['pageTitle']['icon'] ?>"></i><?php echo $this->params['pageTitle']['title'] ?><br><small><?php echo $this->params['pageTitle']['smallTitle']; ?></small>
+                                    </h1>
+                                </div>
                             </div>
-                        </div>
                         <?php endif; ?>
 
                         <?php
@@ -158,11 +159,11 @@ CustomizeProuiAsset::register($this);
                         ])
                         ?>
                         <?php echo Alert::widget() ?>
-                        <?php echo $this->render('@app/views/layouts/_content', ['prouiAsset' => $prouiAsset, 'content' => $content]) ?>
+<?php echo $this->render('@app/views/layouts/_content', ['prouiAsset' => $prouiAsset, 'content' => $content]) ?>
                     </div>
                     <!-- END Page Content -->
 
-                    <?php echo $this->render('@app/views/layouts/_footer', ['prouiAsset' => $prouiAsset]) ?>
+<?php echo $this->render('@app/views/layouts/_footer', ['prouiAsset' => $prouiAsset]) ?>
 
                 </div>
                 <!-- END Main Container -->
@@ -256,7 +257,7 @@ CustomizeProuiAsset::register($this);
         <!-- Load and execute javascript code used only in this page -->
 <!--        <script src="js/pages/index.js"></script>-->
         <!--<script>$(function(){ Index.init(); });</script>-->
-        <?php $this->endBody() ?>
+<?php $this->endBody() ?>
     </body>
 </html>
 <?php $this->endPage() ?>
