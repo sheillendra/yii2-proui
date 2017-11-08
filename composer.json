@@ -13,7 +13,6 @@
         "yiisoft/yii2": "*",
         "bower-asset/font-awesome": "*",
         "bower-asset/jquery-ui": "~1.11.4",
-        "sersid/yii2-owl-carousel-asset": "*",
         "sheillendra/yii2-helpers": "*"
     },
     "autoload": {
